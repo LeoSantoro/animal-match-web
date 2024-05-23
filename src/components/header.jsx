@@ -6,16 +6,24 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import PetsRoundedIcon from '@mui/icons-material/PetsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import logoGreen from '../images/logo-green.png';
 import { Link } from 'react-router-dom'
 
+const Content = styled.div`
+  height: 100px;
+`
 const Container = styled.div`
-  padding: 0 16px;
   height: 100px;
   background-color: #83A872;
   display: flex;
+  position: fixed;
+  width: 100%;
 `
-const LogoImage = styled.img``
+const LogoImage = styled.img`
+@media (max-width: 768px) {
+  width: 60%;
+}    `
 
 const LogoContainer = styled.div`
   display: flex;
@@ -26,8 +34,14 @@ const LogoContainer = styled.div`
 `
 const MenuContainer = styled.div`
 display: flex;
-width: 100px;
+width: 70px;
 align-items: center;
+justify-content: center;
+position: absolute;
+top: 35px;
+}
+
+
 
 `
 const MenuSide = styled.div`
@@ -51,8 +65,7 @@ const CloseContainer = styled.div`
 `
 
 const UserName = styled.p `
-padding: 40px 16px 16px;
-
+  padding: 40px 16px 16px;
   color: #FF8B6A;
 `
 
@@ -71,6 +84,7 @@ const MenuItem = styled.div`
   color: #747474;
   align-items: center;
   &:hover {
+    cursor: pointer;
     background: #FF8B6A;
     color: #FFFFFF;
     svg {
@@ -78,7 +92,7 @@ const MenuItem = styled.div`
     }
   }
   svg {
-  color: #83A872;
+    color: #83A872;
     margin-right: 20px;
   }
 `
@@ -97,7 +111,28 @@ const Overlay = styled.div`
   cursor: pointer; 
 
 `
+const Logout =  styled.div`
+  margin-left: 16px;
+  text-decoration: underline;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: #747474;
+  svg{
+    margin-right: 8px;
+    color: #FF8B6A;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+`
 
+const MenuContent = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 90%;
+`
 function onClickMenu(sidebarStyle, overlayStyle) {
   document.getElementById("sideBar").style.left = sidebarStyle;
   document.getElementById("overlay").style.display = overlayStyle;
@@ -137,13 +172,25 @@ export default function NavBar() {
   return (
     <> 
         <Overlay id="overlay"/>
+        <Content>
         <Container> 
         {/* Menu SideBar */}
+      
+        {/* Menu SideBar */}
+        <MenuContainer onClick={() => onClickMenu('0px', 'block')}>
+          <MenuRoundedIcon fontSize='large' style={{ color: '#ffffff' }}/>
+        </MenuContainer>
+        <LogoContainer>
+          <LogoImage src={logo}/>
+        </LogoContainer>
+        </Container>
         <MenuSide id="sideBar">
+          
           <CloseContainer onClick={() => onClickMenu('-300px', 'none')}>
             <img src={logoGreen} />
             <CloseRoundedIcon fontSize='large' style={{ color: '#FF8B6A'}}/>
           </CloseContainer>
+          <MenuContent>
           <ContainerItems>
             <UserName>Bem vindo, {userName} </UserName>
           {menuItems.map((item) => (
@@ -157,15 +204,10 @@ export default function NavBar() {
             </Link>
           ))}
             </ContainerItems>
+            <Logout><LogoutRoundedIcon /> Sair</Logout>
+            </MenuContent>
         </MenuSide>
-        {/* Menu SideBar */}
-        <MenuContainer onClick={() => onClickMenu('0px', 'block')}>
-          <MenuRoundedIcon fontSize='large' style={{ color: '#ffffff' }}/>
-        </MenuContainer>
-        <LogoContainer>
-          <LogoImage src={logo}/>
-        </LogoContainer>
-        </Container>
+        </Content>
     </>
   )
 }

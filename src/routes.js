@@ -8,23 +8,27 @@ import styled from "styled-components";
 
 const Page = styled.div`
   background-color: #FBF0ED;
+  padding-bottom: 36px;
+  overflow: scroll;
+  height: 100vh;
 `
 const RoutesElements = () => {
 return(
   <Page>
-    
     <BrowserRouter>
     <NavBar />
+  
       <Routes>
         <Route element={<Login/>} path="/"/>
-        <Route element={<Home/>} path="/home"/>
+        <Route element={<Home/>} path="/animals"/>
         <Route element={<div>Perfil</div>} path="/profile"/>
-        <Route element={<div>Animais</div>} path="/animals"/>
-        <Route element={<div>Adoção</div>} path="/adopt"/>
+        <Route element={<div>Confirmação de Adoção</div>} path="/adopt-confirmation"/>
         <Route element={<div>Configurações</div>} path="/settings"/>
+        
       </Routes>
+   
     </BrowserRouter>
-  </Page>
+    </Page>
   )
 }
 
