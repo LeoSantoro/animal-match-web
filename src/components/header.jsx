@@ -10,9 +10,6 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import logoGreen from '../images/logo-green.png';
 import { Link } from 'react-router-dom'
 
-const Content = styled.div`
-  height: 100px;
-`
 const Container = styled.div`
   height: 100px;
   background-color: #83A872;
@@ -21,9 +18,10 @@ const Container = styled.div`
   width: 100%;
 `
 const LogoImage = styled.img`
-@media (max-width: 768px) {
-  width: 60%;
-}    `
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+`
 
 const LogoContainer = styled.div`
   display: flex;
@@ -33,17 +31,15 @@ const LogoContainer = styled.div`
 
 `
 const MenuContainer = styled.div`
-display: flex;
-width: 70px;
-align-items: center;
-justify-content: center;
-position: absolute;
-top: 35px;
-}
-
-
-
+  display: flex;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 35px;
+  }
 `
+
 const MenuSide = styled.div`
   background: #FBF0ED;
   height: 100vh;
@@ -61,7 +57,6 @@ const CloseContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 0 40px ;
-  
 `
 
 const UserName = styled.p `
@@ -128,11 +123,12 @@ const Logout =  styled.div`
 `
 
 const MenuContent = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
 `
+
 function onClickMenu(sidebarStyle, overlayStyle) {
   document.getElementById("sideBar").style.left = sidebarStyle;
   document.getElementById("overlay").style.display = overlayStyle;
@@ -172,7 +168,6 @@ export default function NavBar() {
   return (
     <> 
         <Overlay id="overlay"/>
-        <Content>
         <Container> 
         {/* Menu SideBar */}
       
@@ -207,7 +202,6 @@ export default function NavBar() {
             <Logout><LogoutRoundedIcon /> Sair</Logout>
             </MenuContent>
         </MenuSide>
-        </Content>
     </>
   )
 }
